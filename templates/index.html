@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography</title>
+</head>
+<body>
+    <h1>Steganography</h1>
+
+    <h2>Hide Text</h2>
+    <form action="/encode" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br>
+        <textarea name="message" placeholder="Enter text to hide" required></textarea><br>
+        <button type="submit">Hide Text</button>
+    </form>
+
+    <h2>Retrieve Text</h2>
+    <form action="/decode" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br>
+        <button type="submit">Retrieve Text</button>
+    </form>
+
+    {% if decoded_message %}
+        <h3>Decoded Text:</h3>
+        <p>{{ decoded_message }}</p>
+    {% endif %}
+</body>
+</html>
